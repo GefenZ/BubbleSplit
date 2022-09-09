@@ -1,0 +1,710 @@
+@startuml
+
+title __BUBBLESPLIT's Class Diagram__\n
+
+  namespace academy.learnprogramming.bubblesplit {
+    enum AlertAnswer {
+      NO
+      NOT_KNOWN
+      YES
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.AlertPopUp {
+        {static} + POP_UP_NAME : String
+        {static} + answer : AlertAnswer
+        + AlertPopUp()
+        + draw()
+        + receiveTouch()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.AnimatedSpritesObject {
+        ~ saveSpritesArray : Bitmap[]
+        ~ spritesArray : Bitmap[]
+        - show : boolean
+        - spriteSheet : Bitmap
+        - startTime : long
+        + AnimatedSpritesObject()
+        + draw()
+        + flipImage()
+        + getAnimation()
+        + getImage()
+        + isShow()
+        + rotateImage()
+        + setAnimation()
+        + setShow()
+        + touched()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Animation {
+        + playedOnce : boolean
+        - currentSprite : int
+        - delay : long
+        - rowLength : int
+        - spriteRow : int
+        - sprites : Bitmap[]
+        - startTime : long
+        + getImage()
+        + getPlayedOnce()
+        + getRowLength()
+        + getSpriteRow()
+        + getSprites()
+        + isPlayedOnce()
+        + setDelay()
+        + setPlayedOnce()
+        + setRowLength()
+        + setSprite()
+        + setSpriteRow()
+        + setSprites()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Background {
+        + Background()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Bubble {
+        + isOnSplit : boolean
+        {static} - TAG : String
+        - dx : int
+        - dy : int
+        - gravity : int
+        - miny : int
+        - runnable : Runnable
+        - splitTimer : long
+        - startTime : long
+        + Bubble()
+        + resetAnimation()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    enum BubbleSize {
+      BIG
+      MEDIUM
+      SMALL
+      VERYSMALL
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Bullet {
+        - startTime : long
+        + Bullet()
+        + resetAnimation()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Button {
+        - disabledDrawable : Drawable
+        - enabled : boolean
+        - enabledDrawable : Drawable
+        - motionEventID : int
+        - pressed : boolean
+        - pressedDrawable : Drawable
+        + Button()
+        + draw()
+        + getDisabledDrawable()
+        + getEnabledDrawable()
+        + getMotionEventID()
+        + getPressedDrawable()
+        + isEnabled()
+        + isPressed()
+        + setDisabledDrawable()
+        + setEnabled()
+        + setEnabledDrawable()
+        + setMotionEventID()
+        + setPressed()
+        + setPressedDrawable()
+        + touched()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Character {
+        {static} + TAG : String
+        + gameResult : boolean
+        ~ context : Context
+        - bubbles : Set<Bubble>
+        - bulletDrawable : BitmapDrawable
+        - bullets : Set<Bullet>
+        - buttonTimer : long
+        - isExploding : boolean
+        - runnable1 : Runnable
+        - startTime : long
+        + Character()
+        + bubbleHit()
+        + draw()
+        + ellipseCircleIntersects()
+        + ellipseCircleIntersectsHelper()
+        + explode()
+        + finish()
+        + getWalkingDirection()
+        + intersects()
+        + resetAnimation()
+        + restart()
+        + setWalkingDirection()
+        + shoot()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Circle {
+        # radius : int
+        + Circle()
+        + containsPoint()
+        + draw()
+        + getRadius()
+        + screenRect()
+        + setDrawable()
+        + setRadius()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.CircleButton {
+        {static} - TAG : String
+        - disabledDrawable : Drawable
+        - enabled : boolean
+        - enabledDrawable : Drawable
+        - motionEventID : int
+        - pressed : boolean
+        - pressedDrawable : Drawable
+        - startTime : long
+        + CircleButton()
+        + draw()
+        + getDisabledDrawable()
+        + getEnabledDrawable()
+        + getMotionEventID()
+        + getOnButtonTouchListener()
+        + getPressedDrawable()
+        + isEnabled()
+        + isPressed()
+        + setDisabledDrawable()
+        + setEnabled()
+        + setEnabledDrawable()
+        + setMotionEventID()
+        + setOnButtonTouchListener()
+        + setPressed()
+        + setPressedDrawable()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    interface academy.learnprogramming.bubblesplit.CircleButton.OnButtonTouchListener {
+        {abstract} + onTouchDown()
+        {abstract} + onTouchUp()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Constants {
+        {static} + BIG_BUBBLE_Y_SPEED : int
+        {static} + BOARD_HEIGHT : int
+        {static} + BOARD_WIDTH : int
+        {static} + BUBBLE_NEGATIVE_X_DIRECTION : int
+        {static} + BUBBLE_POSITIVE_X_DIRECTION : int
+        {static} + CAPTURED_BLACK_PIECES_UP_MARGIN : int
+        {static} + CAPTURED_PIECES_LEFT_MARGIN : int
+        {static} + CAPTURED_PIECES_WIDTH : int
+        {static} + CAPTURED_WHITE_PIECES_HEIGHT : int
+        {static} + CAPTURED_WHITE_PIECES_UP_MARGIN : int
+        {static} + CHARACTER_HITBOX_HEIGHT : int
+        {static} + CHARACTER_HITBOX_WIDTH : int
+        {static} + DICE_DIAMETER : int
+        {static} + DOWN_TRIANGLES_VERTICAL_POSITION : int
+        {static} + DOWN_TRIANGLES_VERTICAL_RADIUS_BASE : int
+        {static} + GAMEPLAY_GROUND_Y : int
+        {static} + INVALID_POINTER_ID : int
+        {static} + LEFT_BUTTON_HITBOX_X : int
+        {static} + LEFT_SIDE_HORIZONTAL_START_TRIANGLES_RADIUS_BASE : int
+        {static} + MAX_VOLUME : int
+        {static} + MEDIUM_BUBBLE_Y_SPEED : int
+        {static} + MOVE_BUTTON_HITBOX_Y : int
+        {static} + NO_OF_LEVELS : int
+        {static} + ORIGINAL_SCREEN_HEIGHT : int
+        {static} + ORIGINAL_SCREEN_WIDTH : int
+        {static} + PIECE_DIAMETER : int
+        {static} + PRESS_PLAY_AREA_HEIGHT : int
+        {static} + PRESS_PLAY_AREA_LEFT_MARGIN : int
+        {static} + PRESS_PLAY_AREA_UP_MARGIN : int
+        {static} + PRESS_PLAY_AREA_WIDTH : int
+        {static} + RIGHT_BUTTON_HITBOX_X : int
+        {static} + RIGHT_SIDE_HORIZONTAL_START_TRIANGLES_RADIUS_BASE : int
+        {static} + SCREEN_TO_BOARD_LEFT_MARGIN : int
+        {static} + SHOOTING_SPEED_DELAY : int
+        {static} + SMALL_BUBBLE_Y_SPEED : int
+        {static} + TRIANGLES_SIZE_FROM_RADIUS_BASE : int
+        {static} + TRIANGLE_DISTANCE : int
+        {static} + UP_TRIANGLES_VERTICAL_RADIUS_BASE : int
+        {static} + VERY_SMALL_BUBBLE_Y_SPEED : int
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.EndingScene {
+        {static} + HEIGHT : int
+        {static} + SCENE_NAME : String
+        {static} + WIDTH : int
+        + EndingScene()
+        + draw()
+        + receiveTouch()
+        + terminate()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.Explosion {
+        {static} + TAG : String
+        + playedOnce : boolean
+        + Explosion()
+        + draw()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.GameLogic {
+        ~ random : Random
+        ~ randomNumber : int
+        + GameLogic()
+        {static} + distanceBetweenTwoPoints()
+        + getResizedBitmap()
+        + isCollisionDetected()
+        + isCollisionDetected()
+        {static} - getCollisionBounds()
+        {static} - isFilled()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    abstract class academy.learnprogramming.bubblesplit.GameObject {
+        # height : int
+        # width : int
+        # x : int
+        # y : int
+        + getHeight()
+        + getRectangle()
+        + getWidth()
+        + getX()
+        + getY()
+        + innerRect()
+        + screenRect()
+        + setHeight()
+        + setWidth()
+        + setX()
+        + setY()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.GamePanel {
+        {static} + HEIGHT : int
+        {static} + WIDTH : int
+        {static} + backgroundMusic : MediaPlayer
+        {static} + canvas : Canvas
+        {static} + endingSound : MediaPlayer
+        {static} + explodeSound : MediaPlayer
+        {static} + gameLostSound : MediaPlayer
+        + levelProgress : SharedPreferences
+        + savedSettings : SharedPreferences
+        {static} + scaleFactorXMul : float
+        {static} + scaleFactorYMul : float
+        {static} - TAG : String
+        - popUpDictionary : Map<String, PopUp>
+        - rnd : Random
+        - sceneDictionary : Map<String, Scene>
+        + GamePanel()
+        + closePopUp()
+        + construct()
+        + draw()
+        + enterScene()
+        {static} + getHEIGHT()
+        {static} + getWIDTH()
+        + onBackPressed()
+        + onTouchEvent()
+        + openPopUp()
+        + saveProgress()
+        + setHitBox()
+        + setMusicVolume()
+        + setSound()
+        {static} + setWIDTH()
+        + surfaceChanged()
+        + surfaceCreated()
+        + surfaceDestroyed()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.GamePlayPausePopUp {
+        {static} + POP_UP_NAME : String
+        + waitingForAnswer : boolean
+        + GamePlayPausePopUp()
+        + draw()
+        + receiveTouch()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.GamePlayScene {
+        {static} + HEIGHT : int
+        {static} + SCENE_NAME : String
+        {static} + WIDTH : int
+        {static} + currentLevel : int
+        {static} + gameState : GameState
+        {static} + levelLoaded : boolean
+        {static} + levelProgressed : boolean
+        {static} - TAG : String
+        - bubbles : Set<Bubble>
+        - inputStream : InputStream
+        + GamePlayScene()
+        + draw()
+        + drawCurrentLevel()
+        + isInMoveButtonsHitBox()
+        + loadLevel()
+        + receiveTouch()
+        + terminate()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    enum GameState {
+      GAME_ENDED
+      GAME_NOT_STARTED
+      GAME_PAUSED
+      GAME_STARTED
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.GameTitle {
+        + GameTitle()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.HowToPlayScene {
+        {static} + HEIGHT : int
+        {static} + SCENE_NAME : String
+        {static} + WIDTH : int
+        + HowToPlayScene()
+        + draw()
+        + receiveTouch()
+        + terminate()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.ImageButton {
+        + ImageButton()
+        + touched()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.LevelsScene {
+        {static} + HEIGHT : int
+        {static} + SCENE_NAME : String
+        {static} + WIDTH : int
+        {static} + buttons : ArrayList<Button>
+        - levelDrawablesIDS : int[]
+        + LevelsScene()
+        + draw()
+        + receiveTouch()
+        + terminate()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.MainActivity {
+        {static} + activity : Activity
+        {static} + handler : Handler
+        {static} + runnable : Runnable
+        {static} - HEIGHT : int
+        {static} - WIDTH : int
+        # onCreate()
+        # onPause()
+        # onResume()
+        - hideSystemUI()
+        - showSystemUI()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.MainThread {
+        {static} + TAG : String
+        {static} + frames : Queue<Long>
+        - FPS : int
+        - msSum : long
+        - running : boolean
+        - surfaceHolder : SurfaceHolder
+        + MainThread()
+        {static} + getCurrentTime()
+        + run()
+        + setRunning()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.OpeningScene {
+        {static} + HEIGHT : int
+        {static} + SCENE_NAME : String
+        {static} + WIDTH : int
+        + waitingForAnswerExit : boolean
+        + waitingForAnswerResetAndExit : boolean
+        {static} - TAG : String
+        + OpeningScene()
+        + draw()
+        + receiveTouch()
+        + terminate()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    interface academy.learnprogramming.bubblesplit.PopUp {
+        {abstract} + draw()
+        {abstract} + receiveTouch()
+        {abstract} + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    interface academy.learnprogramming.bubblesplit.Scene {
+        {abstract} + draw()
+        {abstract} + receiveTouch()
+        {abstract} + terminate()
+        {abstract} + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.SceneManager {
+        - popUps : Stack<PopUp>
+        - scenes : Stack<Scene>
+        + SceneManager()
+        + closePopUp()
+        + draw()
+        + enterScene()
+        + onBackPressed()
+        + openPopUp()
+        + receiveTouch()
+        + terminate()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.SettingsPopUp {
+        {static} + POP_UP_NAME : String
+        {static} - TAG : String
+        + SettingsPopUp()
+        + draw()
+        + drawCurrentFPS()
+        + drawCurrentMusicVolume()
+        + drawHitBox()
+        + drawSound()
+        + receiveTouch()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.SingleDrawableObject {
+        # drawable : Drawable
+        # shown : boolean
+        + SingleDrawableObject()
+        + draw()
+        + getDrawable()
+        + isShown()
+        + setDrawable()
+        + setShown()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    class academy.learnprogramming.bubblesplit.SingleImageObject {
+        # image : Bitmap
+        # shown : boolean
+        + SingleImageObject()
+        + draw()
+        + getImage()
+        + isShown()
+        + setImage()
+        + setShown()
+        + update()
+    }
+  }
+  
+
+  namespace academy.learnprogramming.bubblesplit {
+    enum WalkingDirection {
+      DOWN
+      DOWN_LEFT
+      DOWN_RIGHT
+      LEFT
+      RIGHT
+      STANDING
+      UP
+      UP_LEFT
+      UP_RIGHT
+    }
+  }
+  
+
+  academy.learnprogramming.bubblesplit.AlertPopUp .up.|> academy.learnprogramming.bubblesplit.PopUp
+  academy.learnprogramming.bubblesplit.AlertPopUp o-- academy.learnprogramming.bubblesplit.ImageButton : alertNo
+  academy.learnprogramming.bubblesplit.AlertPopUp o-- academy.learnprogramming.bubblesplit.SingleDrawableObject : alertPopUp
+  academy.learnprogramming.bubblesplit.AlertPopUp o-- academy.learnprogramming.bubblesplit.SingleImageObject : alertText
+  academy.learnprogramming.bubblesplit.AlertPopUp o-- academy.learnprogramming.bubblesplit.ImageButton : alertYes
+  academy.learnprogramming.bubblesplit.AlertPopUp o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.AnimatedSpritesObject -up-|> academy.learnprogramming.bubblesplit.GameObject
+  academy.learnprogramming.bubblesplit.AnimatedSpritesObject o-- academy.learnprogramming.bubblesplit.Animation : animation
+  academy.learnprogramming.bubblesplit.Background -up-|> academy.learnprogramming.bubblesplit.SingleImageObject
+  academy.learnprogramming.bubblesplit.Bubble -up-|> academy.learnprogramming.bubblesplit.Circle
+  academy.learnprogramming.bubblesplit.Bubble o-- academy.learnprogramming.bubblesplit.BubbleSize : bubbleSize
+  academy.learnprogramming.bubblesplit.Bullet -up-|> academy.learnprogramming.bubblesplit.Circle
+  academy.learnprogramming.bubblesplit.Button -up-|> academy.learnprogramming.bubblesplit.SingleDrawableObject
+  academy.learnprogramming.bubblesplit.Character -up-|> academy.learnprogramming.bubblesplit.AnimatedSpritesObject
+  academy.learnprogramming.bubblesplit.Character o-- academy.learnprogramming.bubblesplit.Explosion : explosion
+  academy.learnprogramming.bubblesplit.Character o-- academy.learnprogramming.bubblesplit.CircleButton : leftCircleButton
+  academy.learnprogramming.bubblesplit.Character o-- academy.learnprogramming.bubblesplit.CircleButton : rightCircleButton
+  academy.learnprogramming.bubblesplit.Character o-- academy.learnprogramming.bubblesplit.CircleButton : shootCircleButton
+  academy.learnprogramming.bubblesplit.Character o-- academy.learnprogramming.bubblesplit.WalkingDirection : walkingDirection
+  academy.learnprogramming.bubblesplit.Circle -up-|> academy.learnprogramming.bubblesplit.SingleDrawableObject
+  academy.learnprogramming.bubblesplit.CircleButton -up-|> academy.learnprogramming.bubblesplit.Circle
+  academy.learnprogramming.bubblesplit.CircleButton o-- academy.learnprogramming.bubblesplit.CircleButton.OnButtonTouchListener : onButtonTouchListener
+  academy.learnprogramming.bubblesplit.CircleButton +-down- academy.learnprogramming.bubblesplit.CircleButton.OnButtonTouchListener
+  academy.learnprogramming.bubblesplit.EndingScene .up.|> academy.learnprogramming.bubblesplit.Scene
+  academy.learnprogramming.bubblesplit.EndingScene o-- academy.learnprogramming.bubblesplit.Background : background
+  academy.learnprogramming.bubblesplit.EndingScene o-- academy.learnprogramming.bubblesplit.SingleImageObject : endingScreen
+  academy.learnprogramming.bubblesplit.EndingScene o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.EndingScene o-- academy.learnprogramming.bubblesplit.ImageButton : homeButton
+  academy.learnprogramming.bubblesplit.Explosion -up-|> academy.learnprogramming.bubblesplit.AnimatedSpritesObject
+  academy.learnprogramming.bubblesplit.GameLogic o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.GamePanel .up.|> android.view.SurfaceHolder.Callback
+  academy.learnprogramming.bubblesplit.GamePanel -up-|> android.view.SurfaceView
+  academy.learnprogramming.bubblesplit.GamePanel o-- academy.learnprogramming.bubblesplit.GameLogic : gameLogic
+  academy.learnprogramming.bubblesplit.GamePanel o-- academy.learnprogramming.bubblesplit.SceneManager : sceneManager
+  academy.learnprogramming.bubblesplit.GamePanel o-- academy.learnprogramming.bubblesplit.MainThread : thread
+  academy.learnprogramming.bubblesplit.GamePlayPausePopUp .up.|> academy.learnprogramming.bubblesplit.PopUp
+  academy.learnprogramming.bubblesplit.GamePlayPausePopUp o-- academy.learnprogramming.bubblesplit.Button : exitGameButton
+  academy.learnprogramming.bubblesplit.GamePlayPausePopUp o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.GamePlayPausePopUp o-- academy.learnprogramming.bubblesplit.SingleDrawableObject : popUpBackground
+  academy.learnprogramming.bubblesplit.GamePlayPausePopUp o-- academy.learnprogramming.bubblesplit.Button : resumeButton
+  academy.learnprogramming.bubblesplit.GamePlayPausePopUp o-- academy.learnprogramming.bubblesplit.Button : settingsButton
+  academy.learnprogramming.bubblesplit.GamePlayScene .up.|> academy.learnprogramming.bubblesplit.Scene
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.Background : background
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.Character : character
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.SingleDrawableObject : characterHitbox
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.SingleImageObject : endGameMessage
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.CircleButton : leftCircleButton
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.SingleImageObject : lostMessage
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.CircleButton : pauseButton
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.CircleButton : rightCircleButton
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.CircleButton : shootCircleButton
+  academy.learnprogramming.bubblesplit.GamePlayScene o-- academy.learnprogramming.bubblesplit.SingleImageObject : tapToStart
+  academy.learnprogramming.bubblesplit.GameTitle -up-|> academy.learnprogramming.bubblesplit.SingleImageObject
+  academy.learnprogramming.bubblesplit.HowToPlayScene .up.|> academy.learnprogramming.bubblesplit.Scene
+  academy.learnprogramming.bubblesplit.HowToPlayScene o-- academy.learnprogramming.bubblesplit.ImageButton : backButton
+  academy.learnprogramming.bubblesplit.HowToPlayScene o-- academy.learnprogramming.bubblesplit.Background : background
+  academy.learnprogramming.bubblesplit.HowToPlayScene o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.HowToPlayScene o-- academy.learnprogramming.bubblesplit.SingleImageObject : howToPlayScreen
+  academy.learnprogramming.bubblesplit.ImageButton -up-|> academy.learnprogramming.bubblesplit.SingleImageObject
+  academy.learnprogramming.bubblesplit.LevelsScene .up.|> academy.learnprogramming.bubblesplit.Scene
+  academy.learnprogramming.bubblesplit.LevelsScene o-- academy.learnprogramming.bubblesplit.ImageButton : backButton
+  academy.learnprogramming.bubblesplit.LevelsScene o-- academy.learnprogramming.bubblesplit.Background : background
+  academy.learnprogramming.bubblesplit.LevelsScene o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.LevelsScene o-- academy.learnprogramming.bubblesplit.SingleDrawableObject : levelsScreen
+  academy.learnprogramming.bubblesplit.LevelsScene o-- academy.learnprogramming.bubblesplit.SingleImageObject : levelsTitle
+  academy.learnprogramming.bubblesplit.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  academy.learnprogramming.bubblesplit.MainThread o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.OpeningScene .up.|> academy.learnprogramming.bubblesplit.Scene
+  academy.learnprogramming.bubblesplit.OpeningScene o-- academy.learnprogramming.bubblesplit.Background : background
+  academy.learnprogramming.bubblesplit.OpeningScene o-- academy.learnprogramming.bubblesplit.Button : exit
+  academy.learnprogramming.bubblesplit.OpeningScene o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.OpeningScene o-- academy.learnprogramming.bubblesplit.GameTitle : gameTitle
+  academy.learnprogramming.bubblesplit.OpeningScene o-- academy.learnprogramming.bubblesplit.Button : howToPlayButton
+  academy.learnprogramming.bubblesplit.OpeningScene o-- academy.learnprogramming.bubblesplit.Button : levelsButton
+  academy.learnprogramming.bubblesplit.OpeningScene o-- academy.learnprogramming.bubblesplit.Button : resetGameAndExit
+  academy.learnprogramming.bubblesplit.OpeningScene o-- academy.learnprogramming.bubblesplit.Button : settings
+  academy.learnprogramming.bubblesplit.SettingsPopUp .up.|> academy.learnprogramming.bubblesplit.PopUp
+  academy.learnprogramming.bubblesplit.SettingsPopUp o-- academy.learnprogramming.bubblesplit.ImageButton : backButton
+  academy.learnprogramming.bubblesplit.SettingsPopUp o-- academy.learnprogramming.bubblesplit.GamePanel : gamePanel
+  academy.learnprogramming.bubblesplit.SettingsPopUp o-- academy.learnprogramming.bubblesplit.Button : hitBoxButton
+  academy.learnprogramming.bubblesplit.SettingsPopUp o-- academy.learnprogramming.bubblesplit.Button : musicButton
+  academy.learnprogramming.bubblesplit.SettingsPopUp o-- academy.learnprogramming.bubblesplit.SingleImageObject : musicVolumeLine
+  academy.learnprogramming.bubblesplit.SettingsPopUp o-- academy.learnprogramming.bubblesplit.SingleDrawableObject : popUpBackground
+  academy.learnprogramming.bubblesplit.SettingsPopUp o-- academy.learnprogramming.bubblesplit.SingleImageObject : popUpTitle
+  academy.learnprogramming.bubblesplit.SettingsPopUp o-- academy.learnprogramming.bubblesplit.Button : soundButton
+  academy.learnprogramming.bubblesplit.SingleDrawableObject -up-|> academy.learnprogramming.bubblesplit.GameObject
+  academy.learnprogramming.bubblesplit.SingleImageObject -up-|> academy.learnprogramming.bubblesplit.GameObject
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
